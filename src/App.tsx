@@ -1,9 +1,9 @@
 import { useState } from 'react'
 import './App.css'
 import { Grid, GridItem, Show } from '@chakra-ui/react'
+import QuestionCard from './components/QuestionCard'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <Grid       
@@ -19,7 +19,7 @@ function App() {
       <Show above='lg'>
         <GridItem area="aside"backgroundColor="green">Aside</GridItem>
       </Show>
-      <GridItem area="main" backgroundColor="blue">Main</GridItem>
+      <GridItem area="main" backgroundColor="blue"><QuestionCard/></GridItem>
     </Grid>
   )
 }
