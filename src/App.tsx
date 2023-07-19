@@ -11,12 +11,13 @@ function App() {
     <Grid       
       templateAreas={{
         base: `"header" "main"`,
-        lg: `"header header" "aside main"`,
+        lg: `"header header" "aside main" "aside footer"`,
       }}
       templateColumns={{
         base: '1fr',
         lg: '250px 1fr'
-      }}>
+      }}
+      >
       <GridItem area="header" >
         <NavBar/>
       </GridItem>
@@ -25,7 +26,9 @@ function App() {
           <SubjectList subjects={["algebra", "calculus"]}/>
         </GridItem>
       </Show>
+
       <GridItem area="main"><QuestionCard/></GridItem>
+      <GridItem area = "footer" backgroundColor="red">Footer</GridItem>
     </Grid>
   )
 }

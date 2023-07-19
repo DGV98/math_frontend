@@ -20,7 +20,7 @@ const SubjectList = ({subjects}: Props) => {
               <AccordionIcon />
             </AccordionButton>
           </h2>
-          <AccordionPanel pb={4}>
+          <AccordionPanel pb={9}>
             <DifficultyList/>
           </AccordionPanel>
         </AccordionItem>
