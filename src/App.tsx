@@ -3,6 +3,7 @@ import './App.css'
 import { Grid, GridItem, Show } from '@chakra-ui/react'
 import QuestionCard from './components/QuestionCard'
 import NavBar from './components/NavBar'
+import SubjectList from './components/SubjectList'
 
 function App() {
 
@@ -20,7 +21,9 @@ function App() {
         <NavBar/>
       </GridItem>
       <Show above='lg'>
-        <GridItem area="aside"backgroundColor="green">Aside</GridItem>
+        <GridItem area="aside" paddingX={5} paddingY={3}>
+          <SubjectList subjects={["algebra", "calculus"]}/>
+        </GridItem>
       </Show>
       <GridItem area="main"><QuestionCard/></GridItem>
     </Grid>

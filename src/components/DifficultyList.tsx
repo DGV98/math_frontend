@@ -1,3 +1,4 @@
+import { HStack, Button } from '@chakra-ui/react'
 import React from 'react'
 
 const difficulties = [
@@ -8,7 +9,9 @@ const difficulties = [
 
 const DifficultyList = () => {
   return (
-    <div>DifficultyList</div>
+    <HStack>
+        {difficulties.map((difficulty) => <Button>{difficulty.charAt(0).toUpperCase() + difficulty.slice(1)}</Button>)}
+    </HStack>
   )
 }
 
