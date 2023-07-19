@@ -27,7 +27,7 @@ function App() {
         </GridItem>
       </Show>
 
-      <GridItem area="main"><QuestionCard/></GridItem>
+      <GridItem area="main"><QuestionCard question= "Math Text" category='Calculus'/></GridItem>
       <GridItem area = "footer" backgroundColor="red">Footer</GridItem>
     </Grid>
   )

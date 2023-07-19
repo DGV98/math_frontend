@@ -1,4 +1,4 @@
-import { Accordion, AccordionButton, AccordionIcon, AccordionPanel, Box, AccordionItem } from '@chakra-ui/react'
+import { Accordion, AccordionButton, AccordionIcon, AccordionPanel, Box, AccordionItem, Text } from '@chakra-ui/react'
 import React from 'react'
 import DifficultyList from './DifficultyList'; 
 
@@ -15,12 +15,14 @@ const SubjectList = ({subjects}: Props) => {
           <h2>
             <AccordionButton>
               <Box as="span" flex='1' textAlign='left'>
-                {subject.charAt(0).toUpperCase() + subject.slice(1)}
+                <Text>
+                  {subject.charAt(0).toUpperCase() + subject.slice(1)}
+                </Text>
               </Box>
               <AccordionIcon />
             </AccordionButton>
           </h2>
-          <AccordionPanel pb={9}>
+          <AccordionPanel pb={3}>
             <DifficultyList/>
           </AccordionPanel>
         </AccordionItem>
