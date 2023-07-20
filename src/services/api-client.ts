@@ -1,5 +1,5 @@
 import axios from "axios";
 
 export default axios.create({
-  baseURL: "todo"
+  baseURL: "https://dummyjson.com/products"
 });

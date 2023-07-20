@@ -7,11 +7,21 @@ const difficulties = [
   { level: "Hard", color: "red" },
 ];
 
-const DifficultyList = () => {
+interface Props {
+  onClose: () => void;
+}
+
+const DifficultyList = ({ onClose }: Props) => {
   return (
     <HStack>
       {difficulties.map((difficulty) => (
-        <Button fontSize="sm" variant="ghost" colorScheme={difficulty.color}>
+        <Button
+          onClick={onClose}
+          key={difficulty.level}
+          fontSize="sm"
+          variant="ghost"
+          colorScheme={difficulty.color}
+        >
           {difficulty.level}
         </Button>
       ))}

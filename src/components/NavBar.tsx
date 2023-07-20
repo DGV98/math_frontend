@@ -1,13 +1,22 @@
-import { HStack, Text } from '@chakra-ui/react'
-import {BiMath} from "react-icons/bi"
+import { Box, HStack, IconButton, LinkBox, Text } from "@chakra-ui/react";
+import { BiMath, BiMenu } from "react-icons/bi";
 
-const NavBar = () => {
-  return (
-    <HStack margin={4} padding="10px" spacing="24px">
-        <BiMath size={40}/>
-        <Text fontSize="4xl">Math Problem Generator</Text>
-    </HStack>
-  )
+interface Props {
+  openMenu: () => void;
 }
 
-export default NavBar
+const NavBar = ({ openMenu }: Props) => {
+  return (
+    <HStack marginBottom={5} justifyContent="space-between">
+      <HStack>
+        <BiMath size={40} />
+        <Text fontSize="4xl">Math Problem Generator</Text>
+      </HStack>
+      <LinkBox paddingTop={2} onClick={() => openMenu()}>
+        <BiMenu size={40} />
+      </LinkBox>
+    </HStack>
+  );
+};
+
+export default NavBar;

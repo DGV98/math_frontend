@@ -1,6 +1,6 @@
 import React from "react";
 import QuestionCardContainer from "./QuestionCardContainer";
-import { Card, CardBody, CardHeader, Text } from "@chakra-ui/react";
+import { Card, CardBody, CardFooter, CardHeader, Text } from "@chakra-ui/react";
 
 interface Props {
   question: string;
@@ -11,10 +11,9 @@ const QuestionCard = ({ question, category }: Props) => {
   return (
     <QuestionCardContainer>
       <Card>
-        <CardHeader paddingBottom={1} fontSize="2xl">
-          {category}
-        </CardHeader>
+        <CardHeader fontSize="2xl">{category}</CardHeader>
         <CardBody>{question}</CardBody>
+        <CardFooter></CardFooter>
       </Card>
     </QuestionCardContainer>
   );
