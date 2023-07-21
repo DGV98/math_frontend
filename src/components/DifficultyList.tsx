@@ -9,14 +9,18 @@ const difficulties = [
 
 interface Props {
   onClose: () => void;
+  setDifficulty: (difficulty: string) => void;
 }
 
-const DifficultyList = ({ onClose }: Props) => {
+const DifficultyList = ({ onClose, setDifficulty }: Props) => {
   return (
     <HStack>
       {difficulties.map((difficulty) => (
         <Button
-          onClick={onClose}
+          onClick={() => {
+            setDifficulty(difficulty.level);
+            onClose();
+          }}
           key={difficulty.level}
           fontSize="sm"
           variant="ghost"

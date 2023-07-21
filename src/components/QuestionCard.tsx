@@ -11,7 +11,7 @@ const QuestionCard = ({ question, category }: Props) => {
   return (
     <QuestionCardContainer>
       <Card>
-        <CardHeader fontSize="2xl">{category}</CardHeader>
+        {/* <CardHeader fontSize="2xl">{category}</CardHeader> */}
         <CardBody>{question}</CardBody>
         <CardFooter></CardFooter>
       </Card>

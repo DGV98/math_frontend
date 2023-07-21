@@ -13,9 +13,11 @@ import useSubjects from "../hooks/useSubjects";
 
 interface Props {
   onClose: () => void;
+  changeDifficulty: (difficulty: string) => void;
+  changeCategory: (category: string) => void;
 }
 
-const SubjectList = ({ onClose }: Props) => {
+const SubjectList = ({ onClose, changeDifficulty, changeCategory }: Props) => {
   const { data, error, isLoading } = useSubjects();
   // console.log(data);
   return (
@@ -23,7 +25,7 @@ const SubjectList = ({ onClose }: Props) => {
       {data.map((subject) => (
         <AccordionItem key={subject}>
           <h2>
-            <AccordionButton>
+            <AccordionButton onClick={() => changeCategory(subject)}>
               <Box as="span" flex="1" textAlign="left">
                 <Text>{subject}</Text>
               </Box>
@@ -31,7 +33,10 @@ const SubjectList = ({ onClose }: Props) => {
             </AccordionButton>
           </h2>
           <AccordionPanel pb={3}>
-            <DifficultyList onClose={onClose} />
+            <DifficultyList
+              onClose={onClose}
+              setDifficulty={changeDifficulty}
+            />
           </AccordionPanel>
         </AccordionItem>
       ))}

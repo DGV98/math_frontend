@@ -1,14 +1,16 @@
-import { Box } from '@chakra-ui/react';
-import React, { ReactNode } from 'react'
+import { Box } from "@chakra-ui/react";
+import React, { ReactNode } from "react";
 
 interface Props {
-    children: ReactNode;
+  children: ReactNode;
 }
 
-const QuestionCardContainer = ({children} : Props) => {
+const QuestionCardContainer = ({ children }: Props) => {
   return (
-    <Box borderRadius={10} overflow="hidden" margin={2}>{children}</Box>
-  )
-}
+    <Box borderRadius={30} overflow="hidden" margin={2}>
+      {children}
+    </Box>
+  );
+};
 
-export default QuestionCardContainer
+export default QuestionCardContainer;
