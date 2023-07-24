@@ -1,20 +1,19 @@
 import React from "react";
 import QuestionCardContainer from "./QuestionCardContainer";
 import { Card, CardBody, CardFooter, CardHeader, Text } from "@chakra-ui/react";
+import QuestionCardSkeleton from "./QuestionCardSkeleton";
 
 interface Props {
   question: string;
-  category: string;
 }
 
-const QuestionCard = ({ question, category }: Props) => {
+const QuestionCard = ({ question }: Props) => {
   return (
     <QuestionCardContainer>
       <Card>
-        {/* <CardHeader fontSize="2xl">{category}</CardHeader> */}
         <CardBody>{question}</CardBody>
-        <CardFooter></CardFooter>
       </Card>
+      {/* <QuestionCardSkeleton /> */}
     </QuestionCardContainer>
   );
 };

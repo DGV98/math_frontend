@@ -1,5 +1,5 @@
-import useData from "./useData";
+import subjects from "../data/subjects"
 
-const useSubjects = () => useData<string>("/categories")
+const useSubjects = () => ({data: subjects, isLoading: false, error: null})
 
 export default useSubjects;

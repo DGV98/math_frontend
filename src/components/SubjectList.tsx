@@ -20,6 +20,7 @@ interface Props {
 const SubjectList = ({ onClose, changeDifficulty, changeCategory }: Props) => {
   const { data, error, isLoading } = useSubjects();
   // console.log(data);
+  if (error) return null;
   return (
     <Accordion allowToggle>
       {data.map((subject) => (
