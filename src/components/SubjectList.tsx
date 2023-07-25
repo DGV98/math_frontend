@@ -7,7 +7,6 @@ import {
   AccordionItem,
   Text,
 } from "@chakra-ui/react";
-import React from "react";
 import DifficultyList from "./DifficultyList";
 import useSubjects from "../hooks/useSubjects";
 

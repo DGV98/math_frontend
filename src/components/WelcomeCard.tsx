@@ -1,5 +1,4 @@
-import { Card, Center, Heading, Stack, Text } from "@chakra-ui/react";
-import React from "react";
+import { Center, Heading, Stack, Text } from "@chakra-ui/react";
 
 const WelcomeCard = () => {
   return (

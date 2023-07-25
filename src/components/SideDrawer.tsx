@@ -4,9 +4,7 @@ import {
   DrawerContent,
   DrawerHeader,
   DrawerBody,
-  useDisclosure,
 } from "@chakra-ui/react";
-import React from "react";
 import SubjectList from "./SubjectList";
 
 interface Props {
