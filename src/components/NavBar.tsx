@@ -10,7 +10,9 @@ const NavBar = ({ openMenu }: Props) => {
     <HStack marginBottom={5} justifyContent="space-between">
       <HStack>
         <BiMath size={40} />
-        <Text fontSize="4xl">Math Problem Generator</Text>
+        <Text minWidth="200px" fontSize="4xl">
+          Math Problem Generator
+        </Text>
       </HStack>
       <LinkBox paddingTop={2} onClick={() => openMenu()}>
         <BiMenu size={40} />

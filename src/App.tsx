@@ -1,18 +1,9 @@
 import { useEffect, useState } from "react";
 import "./App.css";
-import {
-  Box,
-  Button,
-  Grid,
-  GridItem,
-  Heading,
-  Show,
-  useDisclosure,
-} from "@chakra-ui/react";
-import QuestionCard from "./components/QuestionCard";
+import { Box, Grid, GridItem, useDisclosure } from "@chakra-ui/react";
 import NavBar from "./components/NavBar";
-import SubjectList from "./components/SubjectList";
 import SideDrawer from "./components/SideDrawer";
+import MainSection from "./components/MainSection";
 
 function App() {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -31,7 +22,7 @@ function App() {
       <Grid
         h="90vh"
         templateAreas={{
-          base: `"header" "main" "footer"`,
+          base: `"header" "main"`,
         }}
         templateColumns={{
           base: "1fr",
@@ -41,16 +32,7 @@ function App() {
           <NavBar openMenu={onOpen} />
         </GridItem>
         <GridItem area="main" marginBottom={3}>
-          <Heading marginBottom={8} size="2xl">
-            {category}
-          </Heading>
-          <QuestionCard />
-          <Heading marginTop={8} size="lg">
-            Next
-          </Heading>
-        </GridItem>
-        <GridItem area="footer" backgroundColor="red">
-          Footer
+          <MainSection category={category} difficulty={difficulty} />
         </GridItem>
       </Grid>
       <SideDrawer
