@@ -26,7 +26,7 @@ const SubjectList = ({ onClose, changeDifficulty, changeCategory }: Props) => {
         <AccordionItem key={subject}>
           <h2>
             <AccordionButton onClick={() => changeCategory(subject)}>
-              <Box as="span" flex="1" textAlign="left">
+              <Box as="span" flex="1" textAlign="left" padding={1}>
                 <Text>{subject}</Text>
               </Box>
               <AccordionIcon />
