@@ -2,10 +2,10 @@ import { Heading } from "@chakra-ui/react";
 import React from "react";
 
 interface Props {
-  setMathText: () => void;
+  setMathText: (question: string) => void;
 }
 
-const Next = () => {
+const Next = ({ setMathText }: Props) => {
   return (
     <Heading marginTop={7} size="lg" onClick={() => {}}>
       Next

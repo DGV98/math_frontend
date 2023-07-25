@@ -18,6 +18,7 @@ function App() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [difficulty, setDifficulty] = useState("");
   const [category, setCategory] = useState("");
+  const [question, setQuestion] = useState("");
 
   useEffect(() => {
     if (typeof window?.MathJax !== "undefined") {
@@ -43,10 +44,7 @@ function App() {
           <Heading marginBottom={8} size="2xl">
             {category}
           </Heading>
-          <QuestionCard
-            question="Find the derivative of the function \( f(x) = 3x^2 + 2x + 1 \)."
-            category="Calculus"
-          />
+          <QuestionCard />
           <Heading marginTop={8} size="lg">
             Next
           </Heading>
