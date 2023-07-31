@@ -1,14 +1,20 @@
 import { useEffect, useState } from "react";
 import "./App.css";
-import { Box, Grid, GridItem, useDisclosure } from "@chakra-ui/react";
+import { Box, Grid, GridItem, Heading, useDisclosure } from "@chakra-ui/react";
+import QuestionCard from "./components/QuestionCard";
 import NavBar from "./components/NavBar";
 import SideDrawer from "./components/SideDrawer";
-import MainSection from "./components/MainSection";
+
+export interface QuestionQuery {
+  category: string;
+  difficulty: string;
+}
 
 function App() {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const [difficulty, setDifficulty] = useState("");
-  const [category, setCategory] = useState("");
+  const [questionQuery, setQuestionQuery] = useState<QuestionQuery>(
+    {} as QuestionQuery
+  );
   const [question, setQuestion] = useState("");
 
   useEffect(() => {
@@ -22,7 +28,7 @@ function App() {
       <Grid
         h="90vh"
         templateAreas={{
-          base: `"header" "main"`,
+          base: `"header" "main" "footer"`,
         }}
         templateColumns={{
           base: "1fr",
@@ -32,14 +38,27 @@ function App() {
           <NavBar openMenu={onOpen} />
         </GridItem>
         <GridItem area="main" marginBottom={3}>
-          <MainSection category={category} difficulty={difficulty} />
+          <Heading marginBottom={8} size="2xl">
+            {questionQuery.category}
+          </Heading>
+          <QuestionCard query={questionQuery} />
+          <Heading marginTop={8} size="lg">
+            Next
+          </Heading>
+        </GridItem>
+        <GridItem area="footer" backgroundColor="red">
+          Footer
         </GridItem>
       </Grid>
       <SideDrawer
         isOpen={isOpen}
         onClose={onClose}
-        changeDifficulty={setDifficulty}
-        changeCategory={setCategory}
+        changeDifficulty={(difficulty) =>
+          setQuestionQuery({ ...questionQuery, difficulty })
+        }
+        changeCategory={(category) =>
+          setQuestionQuery({ ...questionQuery, category })
+        }
       />
     </Box>
   );
