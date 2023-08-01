@@ -4,31 +4,21 @@ import { Box, Grid, GridItem, Heading, useDisclosure } from "@chakra-ui/react";
 import QuestionCard from "./components/QuestionCard";
 import NavBar from "./components/NavBar";
 import SideDrawer from "./components/SideDrawer";
-
-export interface QuestionQuery {
-  category: string;
-  difficulty: string;
-}
+import { useQuestion } from "./hooks/useQuestion";
+import WelcomeCard from "./components/WelcomeCard";
+import MainSection from "./components/MainSection";
 
 function App() {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const [questionQuery, setQuestionQuery] = useState<QuestionQuery>(
-    {} as QuestionQuery
-  );
-  const [question, setQuestion] = useState("");
-
-  useEffect(() => {
-    if (typeof window?.MathJax !== "undefined") {
-      window.MathJax.typeset();
-    }
-  }, []);
+  const [category, setCategory] = useState("");
+  const [difficulty, setDifficulty] = useState("");
 
   return (
     <Box minHeight="90vh">
       <Grid
         h="90vh"
         templateAreas={{
-          base: `"header" "main" "footer"`,
+          base: `"header" "main"`,
         }}
         templateColumns={{
           base: "1fr",
@@ -38,27 +28,14 @@ function App() {
           <NavBar openMenu={onOpen} />
         </GridItem>
         <GridItem area="main" marginBottom={3}>
-          <Heading marginBottom={8} size="2xl">
-            {questionQuery.category}
-          </Heading>
-          <QuestionCard query={questionQuery} />
-          <Heading marginTop={8} size="lg">
-            Next
-          </Heading>
-        </GridItem>
-        <GridItem area="footer" backgroundColor="red">
-          Footer
+          <MainSection category={category} difficulty={difficulty} />
         </GridItem>
       </Grid>
       <SideDrawer
         isOpen={isOpen}
         onClose={onClose}
-        changeDifficulty={(difficulty) =>
-          setQuestionQuery({ ...questionQuery, difficulty })
-        }
-        changeCategory={(category) =>
-          setQuestionQuery({ ...questionQuery, category })
-        }
+        changeDifficulty={setDifficulty}
+        changeCategory={setCategory}
       />
     </Box>
   );

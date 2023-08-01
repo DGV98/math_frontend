@@ -1,23 +1,32 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import QuestionCardContainer from "./QuestionCardContainer";
 import { Card, CardBody, CardFooter, CardHeader, Text } from "@chakra-ui/react";
 import QuestionCardSkeleton from "./QuestionCardSkeleton";
 import { useQuestion } from "../hooks/useQuestion";
-import { QuestionQuery } from "../App";
+import Latex from "react-latex-next";
 
 interface Props {
-  query: QuestionQuery;
+  question?: string;
+  isLoading: boolean;
 }
 
-const QuestionCard = ({ query }: Props) => {
-  const { data, error, isLoading } = useQuestion(query);
-
-  if (error) return <p>{error.message}</p>;
+const QuestionCard = ({ question, isLoading }: Props) => {
+  // useEffect(() => {
+  //   if (typeof window?.MathJax !== "undefined") {
+  //     window.MathJax.typeset();
+  //   }
+  // }, []);
   return (
     <QuestionCardContainer>
-      <Card>
-        <CardBody fontSize="2xl">{data?.question}</CardBody>
-      </Card>
+      {!isLoading ? (
+        <Card>
+          <CardBody fontSize="2xl">
+            <Latex>{question}</Latex>
+          </CardBody>
+        </Card>
+      ) : (
+        <QuestionCardSkeleton />
+      )}
     </QuestionCardContainer>
   );
 };

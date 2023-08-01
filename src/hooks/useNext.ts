@@ -10,12 +10,8 @@ const config = {
   },
 };
 
-export const useQuestion = (
-  endpoint: string,
-  category: string,
-  difficulty: string
-) => {
-  const [data, setData] = useState<string[]>([]);
+export const useQuestion = (endpoint: string) => {
+  const [data, setData] = useState("");
   const [error, setError] = useState("");
   const [isLoading, setLoading] = useState(false);
 
@@ -23,17 +19,8 @@ export const useQuestion = (
     const controller = new AbortController();
     setLoading(true);
     apiClient
-      .post(
-        endpoint,
-        {
-          category: category,
-          difficulty: difficulty,
-          signal: controller.signal,
-        },
-        config
-      )
+      .get(endpoint, config)
       .then((res) => {
-        // console.log(re;
         setData(res.data);
         setLoading(false);
       })
@@ -43,6 +30,6 @@ export const useQuestion = (
         setLoading(false);
       });
     return () => controller.abort();
-  }, [category, difficulty]);
+  }, []);
   return { data, error, isLoading };
 };
