@@ -1,4 +1,4 @@
-import { Box, HStack, IconButton, LinkBox, Text } from "@chakra-ui/react";
+import { HStack, LinkBox, Text } from "@chakra-ui/react";
 import { BiMath, BiMenu } from "react-icons/bi";
 
 interface Props {

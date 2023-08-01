@@ -1,10 +1,8 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "./App.css";
-import { Box, Grid, GridItem, Heading, useDisclosure } from "@chakra-ui/react";
-import QuestionCard from "./components/QuestionCard";
+import { Box, Grid, GridItem, useDisclosure } from "@chakra-ui/react";
 import NavBar from "./components/NavBar";
 import SideDrawer from "./components/SideDrawer";
-import { useQuestion } from "./hooks/useQuestion";
 import WelcomeCard from "./components/WelcomeCard";
 import MainSection from "./components/MainSection";
 
@@ -28,7 +26,11 @@ function App() {
           <NavBar openMenu={onOpen} />
         </GridItem>
         <GridItem area="main" marginBottom={3}>
-          <MainSection category={category} difficulty={difficulty} />
+          {difficulty ? (
+            <MainSection category={category} difficulty={difficulty} />
+          ) : (
+            <WelcomeCard />
+          )}
         </GridItem>
       </Grid>
       <SideDrawer

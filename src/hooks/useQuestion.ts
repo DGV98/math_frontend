@@ -1,4 +1,3 @@
-import { useQuery } from "@tanstack/react-query";
 import apiClient from "../services/api-client";
 import { useEffect, useState } from "react";
 import { CanceledError } from "axios";
@@ -13,7 +12,8 @@ const config = {
 export const useQuestion = (
   endpoint: string,
   category: string,
-  difficulty: string
+  difficulty: string,
+  refetch: boolean
 ) => {
   const [data, setData] = useState<string[]>([]);
   const [error, setError] = useState("");
@@ -23,7 +23,7 @@ export const useQuestion = (
     const controller = new AbortController();
     setLoading(true);
     apiClient
-      .post(
+      .post<string[]>(
         endpoint,
         {
           category: category,
@@ -33,8 +33,9 @@ export const useQuestion = (
         config
       )
       .then((res) => {
-        // console.log(re;
-        setData(res.data);
+        // console.log(res.data);
+        setData([...res.data]);
+        // console.log(data);
         setLoading(false);
       })
       .catch((err) => {
@@ -43,6 +44,6 @@ export const useQuestion = (
         setLoading(false);
       });
     return () => controller.abort();
-  }, [category, difficulty]);
+  }, [category, difficulty, refetch]);
   return { data, error, isLoading };
 };
