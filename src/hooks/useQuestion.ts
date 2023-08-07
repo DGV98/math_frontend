@@ -2,12 +2,12 @@ import apiClient from "../services/api-client";
 import { useEffect, useState } from "react";
 import { CanceledError } from "axios";
 
-const config = {
-  headers: {
-    "Content-Type": "application/json",
-    "Access-Control-Allow-Origin": "*",
-  },
-};
+// const config = {
+//   headers: {
+//     "Content-Type": "application/json",
+//     "Access-Control-Allow-Origin": "*",
+//   },
+// };
 
 export const useQuestion = (
   endpoint: string,
@@ -23,18 +23,16 @@ export const useQuestion = (
     const controller = new AbortController();
     setLoading(true);
     apiClient
-      .post<string[]>(
-        endpoint,
-        {
+      .get<string[]>(endpoint, {
+        signal: controller.signal,
+        params: {
           category: category,
           difficulty: difficulty,
-          signal: controller.signal,
         },
-        config
-      )
+      })
       .then((res) => {
         // console.log(res.data);
-        setData([...res.data]);
+        setData(res.data);
         // console.log(data);
         setLoading(false);
       })

@@ -11,7 +11,9 @@ const QuestionCard = ({ question }: Props) => {
     <QuestionCardContainer>
       <Card>
         <CardBody fontSize="2xl">
-          <MathJax>{question}</MathJax>
+          <MathJax inline dynamic>
+            {question}
+          </MathJax>
         </CardBody>
       </Card>
     </QuestionCardContainer>
